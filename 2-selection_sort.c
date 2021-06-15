@@ -1,43 +1,55 @@
 #include "sort.h"
 
 /**
- * swap - swap element of array
- *
- * @xp: int
- * @yp: int
- *
- * Return: void
-*/
-void swap(int *xp, int *yp)
+ * locate_min - Locatin the min From Current index in the array
+ * @array: The Array to be Searched
+ * @index: Starting Index of The Search
+ * @size: The Size of The Array
+ * Return: (int) index of min if found or
+ * same given index if index is the min
+ */
+
+int locate_min(int *array, int index, size_t size)
 {
-	int temp = *xp;
-	*xp = *yp;
-	*yp = temp;
+	int min, idx_min;
+	int i;
+
+	min = array[index];
+	idx_min = index;
+	for (i = index; i < (int)size; i++)
+	{
+		if (array[i] < min)
+		{
+			min = array[i];
+			idx_min = i;
+		}
+	}
+	if (idx_min == index)
+		return (-1);
+	return (idx_min);
 }
 
 /**
- * selection_sort - sort array
+ * selection_sort - Implementation of selection Sort Algrithme
+ * @array: Array to sort type int *
+ * @size: The Size of The Given Array
  *
- * @array: array of int
- * @size: size of array
- *
- * Return: void
+ * Return: (Void) Sorted Array
  */
-
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j;
-	int min_idx;
+	int i;
+	int min, tmp;
 
-	for (i = 0; i < size - 1; i++)
+	for (i = 0; i < (int)size; i++)
 	{
-		min_idx = i;
-		for (j = i + 1; j < size; j++)
+		min = locate_min(array, i, size);
+		if (min != -1)
 		{
-			if (array[j] < array[min_idx])
-				min_idx = j;
+			tmp = array[i];
+			array[i] = array[min];
+			array[min] = tmp;
+			print_array(array, size);
 		}
-		swap(&array[min_idx], &array[i]);
-		print_array(array, size);
 	}
 }
