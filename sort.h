@@ -2,13 +2,8 @@
 #define _SORT_
 #include <stdio.h>
 
-print_array(const int *array, size_t size);
-print_list(const listint_t *list);
 
-void bubble_sort(int *array, size_t size);
-void insertion_sort_list(listint_t **list);
-void selection_sort(int *array, size_t size);
-void quick_sort(int *array, size_t size);
+/** Struct Double Linked List */
 
 /**
  * struct listint_s - Doubly linked list node
@@ -19,7 +14,22 @@ void quick_sort(int *array, size_t size);
  */
 typedef struct listint_s
 {
-    const int n;
-    struct listint_s *prev;
-    struct listint_s *next;
+	const int n;
+	struct listint_s *prev;
+	struct listint_s *next;
 } listint_t;
+
+/** Given FUN prototype */
+
+void print_array(const int *array, size_t size);
+void print_list(const listint_t *list);
+
+/** TASK Prototype */
+void bubble_sort(int *array, size_t size);
+void insertion_sort_list(listint_t **list);
+void selection_sort(int *array, size_t size);
+void quick_sort(int *array, size_t size);
+void shell_sort(int *array, size_t size);
+void quick_sort_hoare(int *array, size_t size);
+
+#endif
