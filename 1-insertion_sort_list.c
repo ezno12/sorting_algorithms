@@ -24,6 +24,7 @@ void swap(listint_t *a, listint_t *b, listint_t **head)
 	b->prev = aux1;
 	if (aux1 == NULL)
 		*head = b;
+}
 
 /**
  * insertion_sort_list - sort array of int
